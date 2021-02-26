@@ -43,7 +43,7 @@ public class ProductService {
         else if (brand == null)
             return productRepository.findByCategory(category);
         else
-            return productRepository.findByBrandAndOrCategory(brand, category);
+            return productRepository.findByBrandAndCategory(brand, category);
 
     }
 }
