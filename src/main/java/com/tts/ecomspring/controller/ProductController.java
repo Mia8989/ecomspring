@@ -1,5 +1,7 @@
 package com.tts.ecomspring.controller;
 
+import com.tts.ecomspring.model.Product;
+import com.tts.ecomspring.service.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -18,13 +20,13 @@ public class ProductController {
     @GetMapping ("/product/{id}")
     public String show(@PathVariable int id, Model model) {
         Product product = productService.findById(id);
-        model.AddAttribute(product);
+        model.addAttribute(product);
         return "product";
     }
-    @RequestMapping(value="/product", method={requestMethod.POST, RequestMethod.PUT})
+    @RequestMapping(value="/product", method={RequestMethod.POST, RequestMethod.PUT})
     public String createOrUpdate(@Valid Product product) {
         productService.save(product);
-        return "redirect:/product/" + product.getID();
-    }
+        return "redirect:/product/" + product.getId();
+
     }
 }

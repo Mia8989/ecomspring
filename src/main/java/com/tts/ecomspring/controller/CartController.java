@@ -1,9 +1,9 @@
 package com.tts.ecomspring.controller;
 
 import com.tts.ecomspring.model.Product;
+import com.tts.ecomspring.model.User;
 import com.tts.ecomspring.service.ProductService;
 import com.tts.ecomspring.service.UserService;
-import org.apache.catalina.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
@@ -43,7 +43,7 @@ public List<Double> list(){
         return "cart";
 }
 @PostMapping("/cart")
-    public String addToCart(RequestParam long id) {
+    public String addToCart(@RequestParam long id) {
         Product p = productService.findById(id);
         setQuantity(p, cart().getOrDefault(p, 0) +1);
         return "cart";
@@ -68,7 +68,7 @@ return "cart";
 private  void setQuantity(Product p,  int quantity) {
     if (quantity > 0)
         cart().put(p, quantity);
-}else{
+else
    cart().remove(p);
         userService.updateCart(cart());
 }

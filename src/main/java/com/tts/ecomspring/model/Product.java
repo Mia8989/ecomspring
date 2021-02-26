@@ -1,8 +1,14 @@
 package com.tts.ecomspring.model;
 
-import lombok.*;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
-import javax.persistence.*;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 
 @Builder
 @Data
@@ -11,15 +17,12 @@ import javax.persistence.*;
 @Entity
 public class Product {
     @Id
-    @GeneratedValue(strategy= GenerationType.AUTO);
-    @Column(name='product_id')
+    @GeneratedValue (strategy = GenerationType.AUTO);
+    private Long id;
 
 //ints
-    private int id;
     private int quantity;
-    private int price;
-
-
+    private double price;
 
 //strings
     private String brand;
@@ -27,7 +30,4 @@ public class Product {
     private String name;
     private String image;
     private String description;
-
-
-
 }

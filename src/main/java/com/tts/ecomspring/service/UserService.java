@@ -2,7 +2,7 @@ package com.tts.ecomspring.service;
 
 import com.tts.ecomspring.model.Product;
 import com.tts.ecomspring.repository.UserRepository;
-import org.apache.catalina.User;
+import com.tts.ecomspring.model.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -41,7 +41,7 @@ public void updateCart(Map<Product, Integer> cart) {
     saveExisting(user);
     }
 
-    Override
+    @Override
     public UserDetails loadUserByUsername(String username) throws
             UsernameNotFoundException {
         User user = findByUsername(username);

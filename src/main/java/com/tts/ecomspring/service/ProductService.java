@@ -35,7 +35,7 @@ public class ProductService {
     public void deleteById(long id) {
         productRepository.deleteById(id);
     }
-    public List<Product> findByBrandsAndOrCategory(String brand, String category) {
+    public List<Product> findByBrandAndOrCategory(String brand, String category) {
         if (category == null && brand == null)
             return productRepository.findAll();
         else if (category == null)

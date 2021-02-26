@@ -18,23 +18,23 @@ import java.util.List;
 @Controller
 @ControllerAdvice
 class MainController {
-    Autowired
+    @Autowired
     ProductService productService;
 
     @GetMapping("/")
     public String main() {
         return "main";
     }
+    @ModelAttribute("products")
     public List <Product> products(){
         return productService.findAll();
     }
+    @ModelAttribute("categories")
     public List<String> categories(){
         return productService.findDistinctCategories();
     }
     @ModelAttribute("brands")
-    public List<String>brands{
-        return productService.findDistinctBrands();
-    }
+    public List<String>brands() { return productService.findDistinctBrands(); }
     @GetMapping("/filter")
     public String filter(@RequestParam(required=false) String category,
                          @RequestParam(required=false) String brand,
